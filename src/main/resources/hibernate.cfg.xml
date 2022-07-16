@@ -26,7 +26,17 @@
             password
         </property>
 
+        <property name="hibernate.hbm2ddl.auto">
+            update
+        </property>
+
+<!--        <property name="hibernate.show_sql">-->
+<!--            true-->
+<!--        </property>-->
+
         <mapping class="tech.kbtg.entities.Employee"/>
+        <mapping class="tech.kbtg.entities.Customer"/>
+        <mapping class="tech.kbtg.entities.Address"/>
 
     </session-factory>
 </hibernate-configuration>

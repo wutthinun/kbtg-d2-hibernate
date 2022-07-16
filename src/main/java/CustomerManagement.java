@@ -5,6 +5,7 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.query.Query;
+import tech.kbtg.entities.Address;
 import tech.kbtg.entities.Customer;
 
 import java.util.List;
@@ -22,15 +23,29 @@ public class CustomerManagement {
                 .buildSessionFactory();
 
         getAll();
-        Customer customer1 = findById(1L);
-        System.out.println(customer1);
+        insertAddress(new Address(
+                "province", "district", "subDistrict", "houseNo", "zipCode"
+        ), 1L);
+//        Customer customer1 = findById(1L);
+//        System.out.println(customer1);
+//
+//        Customer customer2 = findById(2L);
+//        System.out.println(customer2);
+//
+//        insert(new Customer("THE NEW CUSTOMER"));
+//        update(1L);
+//        delete(3L);
+    }
 
-        Customer customer2 = findById(2L);
-        System.out.println(customer2);
+    public static void insertAddress(Address address, Long customerId) {
+        Customer customer = findById(customerId);
 
-        insert(new Customer("THE NEW CUSTOMER"));
-        update(1L);
-        delete(3L);
+        Session session = factory.openSession();
+        Transaction tx = session.beginTransaction();
+        address.setCustomer(customer);
+        session.saveOrUpdate(address);
+        tx.commit();
+        session.close();
     }
 
     public static void getAll() {
