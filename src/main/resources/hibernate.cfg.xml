@@ -37,6 +37,8 @@
         <mapping class="tech.kbtg.entities.Employee"/>
         <mapping class="tech.kbtg.entities.Customer"/>
         <mapping class="tech.kbtg.entities.Address"/>
+        <mapping class = "tech.kbtg.entities.ClassRoom"/>
+        <mapping class = "tech.kbtg.entities.Student"/>
 
     </session-factory>
 </hibernate-configuration>
