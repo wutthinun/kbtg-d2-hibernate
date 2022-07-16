@@ -19,7 +19,7 @@ public class ClassRoom {
     private String name;
 
     @OneToMany(mappedBy = "classRoom", fetch = FetchType.LAZY, orphanRemoval = true)
-    @Fetch(FetchMode.JOIN)
+    @Fetch(FetchMode.JOIN) // N + 1 Solution
     private Set<Student> students;
 
     public ClassRoom(String name) {
